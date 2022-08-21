@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { FiFacebook } from 'react-icons/fi'
 
 const App = () => {
@@ -7,6 +8,7 @@ const App = () => {
       App
       <FiFacebook />
     </div>
+>>>>>>> main
   )
 }
 
