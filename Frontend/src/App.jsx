@@ -1,11 +1,11 @@
 import React from 'react'
-import {FiFacebook} from 'react-icons/fi'
+import { FiFacebook } from 'react-icons/fi'
 
 const App = () => {
   return (
-    <div>App
-
-      <FiFacebook/>
+    <div>
+      App
+      <FiFacebook />
     </div>
   )
 }
