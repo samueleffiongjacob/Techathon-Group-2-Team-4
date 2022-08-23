@@ -1,12 +1,12 @@
 {
-  "name": "techathon_group2_team4",
+  "name": "Teetree ",
   "version": "1.0.0",
   "description": "Techathon-Group-2-Team-4: is Group project for all mentees in corhourt 1.0",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js"
   },
-  "author": "Techathon-Group-2-Team-4",
+  "author": "Techathon",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
