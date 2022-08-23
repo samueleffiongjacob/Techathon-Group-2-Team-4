@@ -1,9 +1,11 @@
+// requiring dependcy
 const { hashSync, compareSync } = require("bcryptjs");
 const jwt = require('jsonwebtoken')
 const UserModel = require("../models/users.model");
 const {buildResponse, buildUser}= require('../utils/index')
 const {APIError} = require('../utils/apiError')
 
+// USER RETRATION
 exports.register = async (req, res, next) => {
   try {
     const { username, password, role, email, address } = req.body;
@@ -41,6 +43,8 @@ exports.register = async (req, res, next) => {
   }
 };
 
+
+// USER LOGIN 
 exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -85,6 +89,7 @@ exports.login = async (req, res, next) => {
   }
 };
 
+// USER CAN STAY AS LONG AS THE WANT
 exports.refreshToken = async (req, res, next) => {
   try {
     const cookies = req.cookies
@@ -112,6 +117,8 @@ exports.refreshToken = async (req, res, next) => {
   }
 };
 
+
+// USER CAN LOGOUT
 exports.logout = async (req, res, next) => {
   try {
     const cookies = req.cookies
