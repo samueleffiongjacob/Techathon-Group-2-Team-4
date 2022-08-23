@@ -1,14 +1,11 @@
 import React from 'react'
-
-import { FiFacebook } from 'react-icons/fi'
+import { Route, Routes } from 'react-router-dom'
 
 const App = () => {
   return (
     <div>
-      App
-      <FiFacebook />
+
     </div>
->>>>>>> main
   )
 }
 
