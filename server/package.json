@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon server.js"
   },
-  "author": "Techathon",
+  "author": "Techathon-Group-2-Team-4",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
