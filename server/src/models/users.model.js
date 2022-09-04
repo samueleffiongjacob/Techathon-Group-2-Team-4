@@ -27,8 +27,8 @@ const UserSchema = new Schema(
 	
 	activated: {
 		type:Boolean,
-		require:true
-		default:false
+		require:true,
+		default:false,
 	},
 	
 	
