@@ -68,10 +68,10 @@ exports.login = async (req, res, next) => {
     
     const accessSecret = process.env.JWT_SECRET_TOKEN
     const refreshSecret = process.env.JWT_REFRESH_TOKEN
-    const payload = { id: user._id, role: user.role }
+    const authload = { id: user._id, role: user.role }
 
     const token = jwt.sign(payload, accessSecret, { expiresIn: "30m" });
-    const refreshToken = jwt.sign(payload, refreshSecret, { expiresIn: "7d" });
+    const refreshToken = jwt.sign(authload, refreshSecret, { expiresIn: "7d" });
 
     user.refreshToken = refreshToken;
     await user.save();
@@ -105,7 +105,7 @@ exports.refreshToken = async (req, res, next) => {
     }
   const verifyRefreshToken = await jwt.verify (refreshToken,  process.env.JWT_REFRESH_TOKEN)
   if(!verifyRefreshToken) return next (APIError.customError(`Forbidden`, 403))
-  const payload = { id: user._id, role: user.role }
+  const authload = { id: user._id, role: user.role }
   const accessSecret = process.env.JWT_SECRET_TOKEN
   const token = jwt.sign (payload, accessSecret, { expiresIn: "30m" })
   res.json({token})

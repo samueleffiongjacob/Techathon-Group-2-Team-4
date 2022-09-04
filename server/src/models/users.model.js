@@ -24,7 +24,14 @@ const UserSchema = new Schema(
       type: String,
       required: true,
     },
-
+	
+	activated: {
+		type:Boolean,
+		require:true
+		default:false
+	},
+	
+	
     address: {
       type: String,
       required: true,
