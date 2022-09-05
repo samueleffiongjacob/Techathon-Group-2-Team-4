@@ -3,7 +3,7 @@ const { hashSync, compareSync } = require("bcryptjs");
 const jwt = require('jsonwebtoken')
 const UserModel = require("../models/users.model");
 const {buildResponse, buildUser}= require('../utils/index')
-const {APIError} = require('../utils/apiError')
+const {APIError} = require('../utils/error')
 
 // USER RETRATION
 exports.register = async (req, res, next) => {
@@ -14,7 +14,7 @@ exports.register = async (req, res, next) => {
         APIError.badRequest(
           `Field(s) missing. Please try again`
         )
-      )
+      );
     }
    
     const oldAccount = await UserModel.findOne({ email });
@@ -71,14 +71,19 @@ exports.login = async (req, res, next) => {
     const authload = { id: user._id, role: user.role }
 
     const token = jwt.sign(payload, accessSecret, { expiresIn: "30m" });
-    const refreshToken = jwt.sign(authload, refreshSecret, { expiresIn: "7d" });
+    const refreshToken = jwt.sign(authload, refreshSecret, { expiresIn: "1d" });
 
     user.refreshToken = refreshToken;
     await user.save();
     
     const data = buildUser(user.toObject());
     
-    res.cookie('jwt', refreshToken, {httpOnly: true, sameSite: 'none', secure: true, maxAge: 7*24*60*60*1000})
+    res.cookie('jwt', refreshToken, {
+      httpOnly: true, 
+      sameSite: 'none', 
+      secure: true, 
+      maxAge: 7*24*60*60*1000,
+    });
     res
       .status(200)
       .json(
@@ -133,12 +138,12 @@ exports.logout = async (req, res, next) => {
       return res.sendStatus(204)
     }
     
-    user.refreshToken = ''
-    await user.save()
-    res.clearCookie('jwt', {httpOnly: true, sameSite: 'none', secure: true,})
-    res.status(200).json(`You have successfully logged out `)
+    user.refreshToken = "";
+    await user.save();
+    res.clearCookie('jwt', {httpOnly: true, sameSite: 'none',secure: true});
+    res.status(200).json(`You have successfully logged out `);
   
   } catch (err) {
     next(err);
   }
-}
+};
