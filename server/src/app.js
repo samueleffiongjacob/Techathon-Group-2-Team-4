@@ -5,6 +5,8 @@ const cors = require("cors");
 const { config } = require("./config");
 const cookieParser = require("cookie-parser");
 const router = require("./routes");
+const passport = require("passport");
+const passportStrategy = require("./passport")
 
 const app = express();
 app.use(express.json());
@@ -13,6 +15,15 @@ app.use(morgan("dev"));
 app.use(cors());
 app.use(cookieParser());
 
+app.use(
+	cookieSession({
+		name: "session",
+		keys: ["Techathon-Group-2-Team-4"],
+		maxAge: 24 * 60 * 60 * 100,
+	})
+);
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(router);
 app.use("/api", (req,res) => {
 	res.send({

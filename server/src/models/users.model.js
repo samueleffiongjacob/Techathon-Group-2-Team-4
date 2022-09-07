@@ -1,6 +1,7 @@
 // Importing desstructing mongoose from installed mongoose
 
 const { Schema, model } = require("mongoose");
+const { logger } = require("../utils/logger");
 
 const id = new ObjectID();
 
@@ -24,14 +25,13 @@ const UserSchema = new Schema(
       type: String,
       required: true,
     },
-	
-	activated: {
-		type:Boolean,
-		require:true,
-		default:false,
-	},
-	
-	
+
+    activated: {
+      type: Boolean,
+      require: true,
+      default: false,
+    },
+
     address: {
       type: String,
       required: true,
@@ -40,8 +40,8 @@ const UserSchema = new Schema(
     role: {
       type: String,
       required: true,
-      default: "client",
-      enum: ["client", "paidclient"],
+      default: "users",
+      enum: ["users", "paidclient"],
     },
     refreshToken: {
       type: String,
