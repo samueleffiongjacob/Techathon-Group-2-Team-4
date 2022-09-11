@@ -35,7 +35,7 @@ exports.superadminRequired = async (req, res, next) => {
     }
     next();
   } catch (error) {
-    next(error);
+    next(err);
   }
 };
 
