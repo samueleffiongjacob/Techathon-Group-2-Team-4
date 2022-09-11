@@ -1,15 +1,12 @@
-import React from 'react'
-
-import { FiFacebook } from 'react-icons/fi'
+import React from "react";
+import Form from "./Components/Form/Form";
 
 const App = () => {
   return (
     <div>
-      App
-      <FiFacebook />
+      <Form />
     </div>
->>>>>>> main
-  )
-}
+  );
+};
 
-export default App
+export default App;
