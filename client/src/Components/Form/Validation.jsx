@@ -11,11 +11,7 @@ const Validation = () => {
             alt="mail"
             className="w-[600px] opacity-5 absolute sm:hidden xs:hidden"
           />
-          <img
-            src={logo}
-            alt="logo"
-            className="w-[10rem] h-12 object-contain absolute top-10 sm:top-16 xs:top-16 "
-          />
+        
           <div className="grid grid-cols-2 -mx-1 md:-mt-[15rem] md:-mx-[3rem] sm:-mx-10 xs:-mx-6 xm:-mt-[10rem] xs:-mt-[4rem] sm:grid-cols-1 xs:grid-cols-1 items-center justify-between">
             <div className=" w-full py-6 ">
               <p className=" text-4xl sm:text-3xl xs:text-xl text-center sm:pb-12 md:text-3xl md:text-start xm:-ml-4  font-medium text-gray-900">
