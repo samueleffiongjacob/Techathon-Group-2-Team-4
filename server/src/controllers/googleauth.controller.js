@@ -1,5 +1,5 @@
 const Grouter = require("express").Router();
-const passport = require("passport");
+import { authenticate } from "passport";
 
 Grouter.get("/login/success", (req, res) => {
   if (req.user) {
@@ -20,11 +20,11 @@ Grouter.get("/login/failed", (req, res) => {
   });
 });
 
-Grouter.get("/google", passport.authenticate("google", ["profile", "email"]));
+Grouter.get("/google", authenticate("google", ["profile", "email"]));
 
 Grouter.get(
   "/google/callback",
-  passport.authenticate("google", {
+  authenticate("google", {
     successRedirect: process.env.CLIENT_URL,
     failureRedirect: "/login/failed",
   })
@@ -35,4 +35,4 @@ Grouter.get("/logout", (req, res) => {
   res.redirect(process.env.CLIENT_URL);
 });
 
-module.exports = Grouter;
+export default Grouter;

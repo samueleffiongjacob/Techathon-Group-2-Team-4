@@ -1,7 +1,6 @@
 // Importing desstructing mongoose from installed mongoose
 
 const { Schema, model } = require("mongoose");
-const { logger } = require('../utils/logger')
 
 const id = new ObjectID();
 
@@ -27,10 +26,10 @@ const AdminSchema = new Schema(
     },
 
     activated: {
-    type:Boolean,
-    require:true,
-    default:false,
-  },
+      type: Boolean,
+      require: true,
+      default: false,
+    },
 
     address: {
       type: String,

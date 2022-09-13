@@ -42,7 +42,7 @@ const createSuperadmin = async (req, res, next) => {
       .status(201)
       .json({ msg: "superadmin created successfully", superadmin });
   } catch (error) {
-    next(error);
+    next(logger.error);
   }
 };
 
@@ -81,7 +81,7 @@ const createAdmin = async (req, res, next) => {
 
     res.status(201).json({ msg: "admin created successfully", admin });
   } catch (error) {
-    next(error);
+    next(logger.error);
   }
 };
 // CRUD ACCEBILITY
@@ -112,7 +112,7 @@ const getAllUsers = async (req, res, next) => {
       .status(201)
       .json({ msg: "User fetched successfully", superadmin, admin });
   } catch (error) {
-    next(error);
+    next(logger.error);
   }
 };
 
@@ -140,7 +140,7 @@ const getUserById = async (req, res, next) => {
       .status(201)
       .json({ msg: "User fetched successfully", superadmin, admin });
   } catch (error) {
-    next(error);
+    next(logger.error);
   }
 };
 
@@ -163,7 +163,7 @@ const updateUser = async (req, res, next) => {
     superadmin, (admin = await UserModel.findByIdAndUpdate(id, req.body));
     res.status(201).json({ msg: "User updated successfully", user });
   } catch (error) {
-    next(error);
+    next(logger.error);
   }
 };
 
@@ -189,7 +189,7 @@ const deleteUser = async (req, res, next) => {
       .status(201)
       .json({ msg: `User with id: ${id} has been deleted successfully` });
   } catch (error) {
-    next(error);
+    next(logger.error);
   }
 };
 

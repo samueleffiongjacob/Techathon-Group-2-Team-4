@@ -1,32 +1,65 @@
-require('dotenv/config');
+require("dotenv/config");
 
-const { logger } = require('./logger');
+const { logger } = require("./logger");
 
 const {
-    DB_HOST,
-    DB_USER,
-    DB_PASS,
-    DB_NAME,
-    JWT_SECRET_KEY
+  DB_URI,
+  SALT,
+  BASE_URL,
+  HOST,
+  SERVICE,
+  SECURE,
+  USER,
+  PASS,
+  JWT_SECRET_TOKEN,
+  JWT_REFRESH_TOKEN,
+  NODE_ENV,
+  CLIENT_URL,
+  CLIENT_ID,
+  CLIENT_SECRET,
 } = process.env;
 
 const requiredCredentials = [
-    'DB_URI',
-    'JWT_SECRET_TOKEN',
-    'JWT_REFRESH_TOKEN',
-    'NODE_ENV'
+  "DB_URI",
+  "SALT",
+  "BASE_URL",
+  "HOST",
+  "SERVICE",
+  "SECURE",
+  "USER",
+  "PASS",
+  "JWT_SECRET_TOKEN",
+  "JWT_REFRESH_TOKEN",
+  "NODE_ENV",
+  "CLIENT_URL",
+  "CLIENT_ID",
+  "CLIENT_SECRET",
 ];
 
 for (const credential of requiredCredentials) {
-    if (process.env[credential] === undefined) {
-        logger.error(`Missing required crendential: ${credential}`);
-        process.exit(1);
-    }
+  if (process.env[credential] === undefined) {
+    logger.error(`Missing required crendential: ${credential}`);
+    process.exit(1);
+  }
 }
 
 module.exports = {
-    DB_URI,
-    JWT_SECRET_TOKEN,
-    JWT_REFRESH_TOKEN,
-    NODE_ENV
+  DB_URI,
+  SALT,
+  BASE_URL,
+  HOST,
+  SERVICE,
+  SECURE,
+  USER,
+  PASS,
+  JWT_SECRET_TOKEN,
+  JWT_REFRESH_TOKEN,
+  NODE_ENV,
+  CLIENT_URL,
+  CLIENT_ID,
+  CLIENT_SECRET,
+  DB_URI,
+  JWT_SECRET_TOKEN,
+  JWT_REFRESH_TOKEN,
+  NODE_ENV,
 };
